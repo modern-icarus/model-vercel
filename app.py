@@ -31,7 +31,8 @@ def load_model_english():
     """
     Dynamically load the English hate speech detection model.
     """
-    return pipeline("text-classification", model="Hate-speech-CNERG/dehatebert-mono-english")
+    hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")  # Retrieve the token from environment variables
+    return pipeline("text-classification", model="Hate-speech-CNERG/dehatebert-mono-english", use_auth_token=hf_token)
 
 def load_model_tagalog():
     """
