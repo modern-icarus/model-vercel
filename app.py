@@ -6,6 +6,9 @@ import langdetect
 from langdetect.lang_detect_exception import LangDetectException
 import warnings
 import time
+import os
+
+
 
 app = FastAPI()
 
@@ -34,7 +37,8 @@ def load_model_tagalog():
     """
     Dynamically load the Tagalog hate speech detection model.
     """
-    return pipeline("text-classification", model="ggpt1006/tl-hatespeech-detection")
+    hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")  # Automatically gets the token from the environment variable
+    return pipeline("text-classification", model="ggpt1006/tl-hatespeech-detection", use_auth_token=hf_token)
 
 def predict_filipino(text):
     """
