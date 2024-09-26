@@ -1,9 +1,7 @@
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-import torch
-import torch.nn.functional as F
+from transformers import pipeline
 import langdetect
 from langdetect.lang_detect_exception import LangDetectException
 import warnings
